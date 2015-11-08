@@ -11,8 +11,9 @@ RUN DEBIAN_FRONTEND=noninteractive && \
     a2enmod ssl && \
     mkdir /etc/apache2/ssl && \
     openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/apache2/ssl/apache.key -out /etc/apache2/ssl/apache.crt -subj "/" && \
-	cat 000-default-ssl.conf | tee -a /etc/apache2/sites-available/000-default-ssl.conf && \
-	a2ensite 000-default-ssl.conf && \
+    cat 000-default-ssl.conf | tee -a /etc/apache2/sites-available/000-default-ssl.conf && \
+    a2ensite 000-default-ssl.conf && \
+    rm 000-default-ssl.conf /etc/apache2/sites-available/default-ssl.conf && \
     service apache2 restart && \
     set -e && \
 	rm -f /usr/local/apache2/logs/httpd.pid
