@@ -29,7 +29,8 @@ ENV APACHE_RUN_USER=www-data \
     APACHE_SERVERALIAS=docker.localhost \
     APACHE_DOCUMENTROOT=/var/www
 
-VOLUME ["/var/www", "/etc/apache2"]
+# Expose the document root, sites and SSL certificates location
+VOLUME ["/var/www", "/etc/apache2/sites-available", "/etc/apache2/ssl"]
 
 EXPOSE 80 443
 
