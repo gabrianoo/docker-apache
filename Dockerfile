@@ -8,6 +8,9 @@ RUN DEBIAN_FRONTEND=noninteractive && \
     apt-get -yq install apache2 && \
     a2enmod proxy && \
     a2enmod proxy_http && \
+    a2enmod headers && \
+    a2enmod rewrite && \
+    a2enmod proxy_wstunnel && \
     a2enmod ssl && \
     mkdir /etc/apache2/ssl && \
     openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/apache2/ssl/apache.key -out /etc/apache2/ssl/apache.crt -subj "/" && \
